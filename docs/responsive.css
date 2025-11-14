@@ -1,0 +1,662 @@
+/* ===========================================================
+   RESPONSIVE PARA MÓVILES — 480px
+   =========================================================== */
+
+@media (max-width: 480px) {
+
+    /* -------------------- HEADER -------------------- */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        padding: 8px;
+        border-radius: 8px;
+        transition: transform 0.15s ease;
+    }
+    .menu-toggle:active { transform: scale(0.97); }
+
+    .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        z-index: 150;
+    }
+
+    /* Cuando el menú abre */
+    .main-header.open ~ .menu-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* ocultamos nav links por defecto */
+    .main-header nav {
+        display: none;
+    }
+
+    /* cuando el header tenga .open, mostramos un overlay nav estilo drawer */
+    .main-header.open nav {
+        display: flex;
+        position: fixed;
+        inset: 64px 0 0 0;
+        justify-content: center;
+        align-items: flex-start;
+        z-index: 240;
+        animation: navSlideDown 240ms cubic-bezier(.2,.9,.2,1);
+    }
+
+    .main-header.open nav ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+        background: rgba(10,10,10,1);
+    }
+
+    .main-header.open nav ul li a {
+        display: block;
+        padding: 12px 6px;
+        font-size: 1.15rem;
+        color: #fff;
+        background: transparent;
+    }
+
+    .main-header.open nav ul li a:hover,
+    .main-header.open nav ul li a:focus {
+        color: #00e0e0;
+        text-shadow: 0 0 8px rgba(0,224,224,0.35);
+    }
+
+    @keyframes navSlideDown {
+        from { transform: translateY(-8px); opacity: 0; }
+        to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .main-header {
+        align-items: center;
+        padding: 10px 15px;
+        background: rgba(10,10,10,1);
+    }
+
+    /* -------------------- HERO -------------------- */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        height: auto;
+        gap: 20px;
+    }
+
+    /* ✅ Imagen primero (arriba) */
+    .hero-image {
+        order: 1;
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        margin: 0 auto;
+        border-radius: 12px;
+    }
+
+    /* ✅ Texto en medio */
+    .hero-text {
+        order: 2;
+        padding-top: 125px;
+    }
+
+    .hero-text .title {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .hero-text .subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* ✅ Botón al final (abajo) */
+    .cta {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+        order: 3;
+    }
+
+
+    /* -------------------- WORKS -------------------- */
+    .section-title {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .works {
+        padding: 20px 20px;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .work-card img {
+        max-height: 240px;
+        object-fit: cover;
+    }
+
+    .work-info h3 {
+        font-size: 1.1rem;
+    }
+
+/* -------------------- MODAL -------------------- */
+    .gallery-modal .gallery-content {
+        width: 95%;
+        padding: 20px 10px;
+    }
+
+    .gallery-main {
+        gap: 15px;
+        position: relative;
+    }
+
+    .gallery-info {
+        order: 1;
+        width: 100%;
+        height: 60vh;
+    }
+
+    .gallery-image {
+        max-height: 300px;
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .gallery-title {
+        font-size: 1.3rem;
+        margin-top: 15px;
+    }
+
+    .gallery-description {
+        font-size: 0.9rem;
+    }
+
+    /* ✅ Botones de navegación juntos abajo */
+    .nav-btn {
+        position: static !important;
+        order: 2;
+        font-size: 1.3rem;
+        padding: 15px 30px;
+        background: rgba(0, 224, 224, 0.15);
+        border-radius: 12px;
+        margin: 10px 8px 0;
+        flex: 0 0 auto;
+        transition: all 0.2s ease;
+    }
+
+    .close-modal{
+        top: 0px;
+    }
+
+    .nav-btn:active {
+        background: rgba(0, 224, 224, 0.3);
+        transform: scale(0.92);
+    }
+
+    /* Alinea ambos botones en una fila horizontal */
+    .gallery-main {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+/* -------------------- ABOUT -------------------- */
+    .about{        
+        padding: 0vh;
+    }
+
+     .about-container {
+        display: flex;
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .about-title {
+        font-size: 1.5rem;
+    }
+
+    .about-intro,
+    .about-detail {
+        font-size: 0.95rem;
+    }
+
+    .about-image img {
+        width: 100%;
+        max-width: 350px;
+        border-radius: 12px;
+    }
+
+    .about-cta {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
+
+    .about-text{
+        order: 2;
+    }
+
+    .about-image{
+        order: 1;
+    }
+
+    /* -------------------- CONTACT SPLIT -------------------- */
+    .contact-sticky {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+        padding-bottom: 100px;
+    }
+
+    .contact-left h2 {
+        font-size: 1.6rem;
+    }
+
+    .contact-note {
+        font-size: 0.95rem;
+    }
+
+    .contact-button {
+        margin-bottom: 40px;
+        font-size: 0.9rem;
+        padding: 10px 18px;
+    }
+
+    .help-section {
+        gap: 20px;
+    }
+
+    .help-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .help-item p {
+        font-size: 0.92rem;
+    }
+    
+    /* -------------------- FOOTER -------------------- */
+    .footer{
+        padding: 0;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-about h3 {
+        font-size: 1.3rem;
+    }
+
+    .footer-links h4 {
+        font-size: 1.1rem;
+    }
+
+    .footer-links ul li a {
+        font-size: 0.9rem;
+    }
+
+    .footer-social .social-icons {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .footer-bottom{
+        padding-bottom: 3rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+
+    /* -------------------- BACK TO TOP -------------------- */
+    #backToTop {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    /* -------------------- CONTACT MODAL -------------------- */
+    .contact-modal .contact-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.9rem;
+    }
+
+    .send-btn {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+/* ===========================================================
+   RESPONSIVE PARA TABLETS — 481px a 768px
+   =========================================================== */
+
+@media (min-width: 481px) and (max-width: 768px) {
+
+    /* -------------------- HEADER -------------------- */
+    .main-header {
+        padding: 12px 25px;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .main-header nav ul {
+        gap: 1.5rem;
+    }
+
+    .main-header a {
+        font-size: 0.95rem;
+    }
+
+    /* -------------------- HERO -------------------- */
+    .hero {
+        flex-direction: row;
+        height: 85vh;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .hero-text {
+        flex: 1;
+        max-width: 450px;
+    }
+
+    .hero-text .title {
+        font-size: 2rem;
+        line-height: 1.25;
+    }
+
+    .hero-text .subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-image {
+        flex: 1;
+        max-width: 400px;
+    }
+
+    .hero-image img {
+        max-width: 380px;
+        border-radius: 50px;
+    }
+
+    .cta {
+        font-size: 0.95rem;
+        padding: 12px 24px;
+    }
+
+    /* -------------------- WORKS -------------------- */
+    .works {
+        padding: 60px 5%;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+    }
+
+    .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .work-card img {
+        max-height: 280px;
+    }
+
+    .work-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .work-info p {
+        font-size: 0.95rem;
+    }
+
+    /* -------------------- MODAL GALERÍA -------------------- */
+    .gallery-modal .gallery-content {
+        max-width: 650px;
+    }
+
+    .gallery-main {
+        gap: 20px;
+    }
+
+    .gallery-info {
+        height: auto;
+    }
+
+    .gallery-image {
+        max-height: 400px;
+        max-width: 500px;
+    }
+
+    .gallery-title {
+        font-size: 1.6rem;
+        margin-top: 10px;
+    }
+
+    .gallery-description {
+        font-size: 1rem;
+        max-width: 500px;
+    }
+
+    .nav-btn {
+        font-size: 1.5rem;
+        margin: 15px 12px 0;
+    }
+
+    .close-modal {
+        top: -5px;
+        right: 5px;
+        font-size: 2.2rem;
+    }
+
+    /* -------------------- ABOUT -------------------- */
+    .about {
+        padding: 60px 5%;
+    }
+
+    .about-container {
+        flex-direction: row;
+        gap: 40px;
+        text-align: left;
+        align-items: center;
+    }
+
+    .about-text {
+        flex: 1;
+        order: 1;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
+
+    .about-intro,
+    .about-detail {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .about-image {
+        flex: 1;
+        order: 2;
+    }
+
+    .about-image img {
+        max-width: 320px;
+        border-radius: 16px;
+    }
+
+    .about-cta {
+        font-size: 0.95rem;
+        padding: 12px 20px;
+    }
+
+    /* -------------------- CONTACT SPLIT -------------------- */
+    .contact-sticky {
+        flex-direction: row;
+        padding: 60px 5%;
+        gap: 50px;
+        align-items: flex-start;
+    }
+
+    .contact-left {
+        flex: 0 0 40%;
+        position: sticky;
+        top: 8%;
+    }
+
+    .contact-left h2 {
+        font-size: 2rem;
+    }
+
+    .contact-note {
+        font-size: 1rem;
+        max-width: 350px;
+    }
+
+    .contact-button {
+        font-size: 0.95rem;
+        padding: 12px 24px;
+        margin-bottom: 0;
+    }
+
+    .contact-right {
+        flex: 0 0 55%;
+    }
+
+    .help-section {
+        gap: 40px;
+    }
+
+    .help-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .help-item p {
+        font-size: 0.98rem;
+        line-height: 1.6;
+    }
+
+    /* -------------------- FOOTER -------------------- */
+    .footer {
+        padding: 60px 5% 30px;
+    }
+
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .footer-about h3 {
+        font-size: 1.5rem;
+    }
+
+    .footer-about p {
+        font-size: 0.95rem;
+    }
+
+    .footer-links {
+        flex: 1 1 25%;
+    }
+
+    .footer-links h4 {
+        font-size: 1.15rem;
+    }
+
+    .footer-social {
+        flex: 1 1 25%;
+    }
+
+    .footer-social h4 {
+        font-size: 1.15rem;
+    }
+
+    .social-icons {
+        justify-content: flex-start;
+        gap: 18px;
+    }
+
+    .social-icons a {
+        font-size: 1.6rem;
+    }
+
+    .footer-bottom {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .footer-bottom p {
+        font-size: 0.85rem;
+    }
+
+    /* -------------------- BACK TO TOP -------------------- */
+    #backToTop {
+        bottom: 35px;
+        right: 35px;
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    /* -------------------- CONTACT MODAL -------------------- */
+    .contact-modal .contact-content {
+        width: 85%;
+        max-width: 550px;
+        padding: 35px 30px;
+    }
+
+    .contact-content h2 {
+        font-size: 2rem;
+    }
+
+    .contact-content p {
+        font-size: 1.05rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.95rem;
+        padding: 12px 14px;
+    }
+
+    .send-btn {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+
+    .close-contact {
+        font-size: 2rem;
+        top: 18px;
+        right: 22px;
+    }
+}

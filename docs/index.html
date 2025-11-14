@@ -1,0 +1,221 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Juan Esteban Acosta Peña</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="responsive.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>  
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo">
+      Juan Esteban
+      <img src="images/tem.png" alt="Marca personal" class="logo-mark">
+    </div>
+    <div class="menu-overlay"></div>
+    <button class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#works">Proyectos</a></li>
+        <li><a href="#about">Sobre mi</a></li>
+        <li><a href="#contact-sticky">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <button id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-text">
+      <h1 class="title">
+        Diseñador Multimedia enfocado<br>
+        en <span>Ilustración</span> y <span>Modelado 3D</span>
+      </h1>
+      <p class="subtitle">Creo mundos, personajes y visuales que cuentan historias.</p>
+      <a href="#works" class="cta">Ver trabajos</a>
+    </div>
+    <div class="hero-image">
+      <img src="images/juan-acosta-pena-render.jpg" alt="Hero placeholder">
+    </div>
+  </section>
+
+  <!-- WORKS SECTION -->
+  <section id="works" class="works">
+    <h2 class="section-title">Proyectos Seleccionados</h2>
+    <div class="works-grid">
+      <div class="work-card">
+        <img src="images/juan-acosta-pena-r4.jpg" alt="Proyecto 1">
+        <div class="work-info">
+          <h3>Escultura 3D</h3>
+          <p>Experimentación de forma y textura.</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <img src="images/juan-acosta-pena-final_nt.jpg" alt="Proyecto 2">
+        <div class="work-info">
+          <h3>Concept Art</h3>
+          <p>Exploración narrativa visual.</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <img src="images/juan-acosta-pena-render-v04.jpg" alt="Proyecto 3">
+        <div class="work-info">
+          <h3>Modelado</h3>
+          <p>Conceptos a partir del volumen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- MODAL DE GALERÍA -->
+<div id="gallery-modal" class="gallery-modal">
+  <div class="gallery-content">
+    <span class="close-modal">&times;</span>
+    <div class="gallery-main">
+      <button class="nav-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="gallery-info">
+        <img class="gallery-image" src="" alt="">
+        <h3 class="gallery-title"></h3>
+        <p class="gallery-description"></p>
+      </div>
+      <button class="nav-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT ME SECTION -->
+<section id="about" class="about">
+  <div class="about-container">
+    <div class="about-text">
+      <h2 class="about-title">Sobre mí</h2>
+      <p class="about-intro">
+        Soy <span>Juan Esteban Acosta Peña</span>, diseñador multimedia apasionado por la ilustración,
+        el modelado 3D y la animación. Disfruto crear experiencias visuales que transmitan
+        emociones y den vida a ideas únicas. 
+      </p>
+      <p class="about-detail">
+        Mi enfoque combina técnica, narrativa y experimentación visual. Desde esculturas digitales 
+        hasta concept art, busco que cada pieza tenga un propósito estético y expresivo.
+      </p>
+      <a href="https://drive.google.com/file/d/1U96wCoI0yLQ2dNZJ-BbGurqFNFW5GK7R/view?usp=sharing"
+       class="about-cta" target="_blank">Descargar full CV</a>
+    </div>
+    <div class="about-image">
+      <img src="images/WhatsApp Image 2025-10-17 at 12.28.23 PM.jpeg" alt="Retrato o trabajo de Juan Esteban" />
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT SPLIT SECTION -->
+<!-- CONTACT SPLIT SECTION -->
+<section id="contact-sticky" class="contact-sticky">
+  <div class="contact-left">
+    <h2>Estoy</h2>
+    <p class="contact-note">Disponible para proyectos freelance, colaboraciones y encargos creativos.</p>
+    <a href="#" class="contact-button open-contact">Escríbeme</a>
+  </div>
+
+  <div class="contact-right">
+    <div class="help-section">
+      <div class="help-item">
+        <h3>🎨 Ilustración</h3>
+        <p>Diseño de personajes, portadas, visuales narrativos y estilos experimentales.</p>
+      </div>
+      <div class="help-item">
+        <h3>🧱 Modelado 3D</h3>
+        <p>Esculpido digital, props estilizados, renderizado y composición visual.</p>
+      </div>
+      <div class="help-item">
+        <h3>🎬 Animación</h3>
+        <p>Motion design y animaciones breves con narrativa visual coherente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+
+    <!-- Columna 1: Mensaje personal -->
+    <div class="footer-about">
+      <h3>Gracias por visitar mi portfolio</h3>
+      <p>Explora, inspírate y si algo resonó contigo, <br>
+      hablemos sobre cómo crear algo increíble juntos.</p>
+    </div>
+
+    <!-- Columna 2: Enlaces rápidos -->
+    <div class="footer-links">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#works">Proyectos</a></li>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#contact-sticky">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Redes -->
+    <div class="footer-social">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/nasty.styl3/" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.artstation.com/juanacosta77055" target="_blank" aria-label="ArtStation">
+                <i class="fa-brands fa-artstation"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/juan-esteban-acosta-pe%C3%B1a-1ba57b29b/" target="_blank" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Juan Esteban Acosta Peña — Todos los derechos reservados</p>
+  </div>
+</footer>
+
+  <!-- MODAL DE CONTACTO -->
+<div id="contact-modal" class="contact-modal">
+  <div class="contact-content">
+    <span class="close-contact">&times;</span>
+    <h2>Contáctame</h2>
+    <p>¿Tienes una idea o proyecto en mente? Cuéntame un poco y te responderé pronto.</p>
+
+    <form id="contact-form" class="contact-form">
+      <input type="text" name="name" placeholder="Tu asunto" required>
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <textarea name="message" rows="4" placeholder="Tu mensaje" required></textarea>
+      <button type="submit" class="send-btn">Enviar mensaje</button>
+    </form>
+
+    <div class="form-status"></div>
+  </div>
+</div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
