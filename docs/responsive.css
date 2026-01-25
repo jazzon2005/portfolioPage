@@ -369,6 +369,8 @@
 
     #gallery-full-grid {
         grid-template-columns: 1fr !important; /* 1 columna estricta */
+        padding: 0;
+        padding-top: 5%;
     }
     
     .top-bar-right {
@@ -405,6 +407,21 @@
         top: 1rem !important;
         right: 1rem !important;
     }
+
+   .project-hero-content-container{
+      padding: 7% !important;
+   }
+
+   .project-gallery-section{
+      padding: 0 !important; 
+      padding-top: 1rem !important;
+      padding-top: 1rem !important;
+   }
+
+   .close-contact{
+      right: 10px;
+      top: 0;
+   }
 }
 
 /* ===========================================================
@@ -1091,3 +1108,4 @@
     }
 
 }
+
