@@ -19,11 +19,19 @@ gsap.registerPlugin(ScrollTrigger);
 // Convierte el objeto tags { type:[], focus:[] } en un array simple ["Concept", "Personaje"...]
 const getFlatTags = (project) => {
     if (!project.tags) return [];
-    if (Array.isArray(project.tags)) return project.tags;
-    // Aplanamos y limpiamos espacios por seguridad
-    return Object.values(project.tags).flat()
-        .filter(tag => typeof tag === 'string')
-        .map(tag => tag.trim());
+    
+    let tagsList = [];
+    if (Array.isArray(project.tags)) {
+        tagsList = project.tags;
+    } else {
+        tagsList = Object.values(project.tags).flat().filter(tag => typeof tag === 'string');
+    }
+
+    // TRADUCCIÓN DE TAGS AL VUELO
+    if (typeof LanguageManager !== 'undefined') {
+        return tagsList.map(tag => LanguageManager.translateTag(tag));
+    }
+    return tagsList;
 };
 
 /* ==========================================================================
@@ -947,29 +955,24 @@ const GlobalLogic = {
     },
 
     // --- NUEVO: SISTEMA DE LIGHTBOX REUTILIZABLE ---
-     setupLightbox: function() {
+    setupLightbox: function() {
         // Inyectar HTML si no existe
         if (!document.getElementById('lightbox')) {
             const lightboxDiv = document.createElement('div');
             lightboxDiv.id = 'lightbox';
+            // Inicialmente en -10 para evitar bloqueos fantasma en móvil si la opacidad falla
+            lightboxDiv.style.zIndex = '-10'; 
             lightboxDiv.innerHTML = `
                 <div class="lightbox-container">
                     <button id="lightbox-close">&times;</button>
                     
-                    <!-- Área de Imagen -->
                     <div class="lightbox-image-area">
-                        <!-- Flechas Flotantes (Desktop) -->
                         <button class="lightbox-btn-float lightbox-prev-float" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
-                        
                         <img id="lightbox-img" src="" alt="Vista previa">
-                        
                         <button class="lightbox-btn-float lightbox-next-float" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
                     </div>
 
-                    <!-- Panel de Información -->
                     <div class="lightbox-panel">
-                        
-                        <!-- Barra de Controles (Móvil/Tablet) -->
                         <div class="lightbox-controls-bar">
                             <div class="lightbox-nav-group">
                                 <button class="lightbox-btn-panel lightbox-prev-panel" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
@@ -978,13 +981,11 @@ const GlobalLogic = {
                             </div>
                         </div>
 
-                        <!-- Info Texto -->
                         <div class="lightbox-info-content">
                             <h3 class="lightbox-info-title" id="lb-title">Título</h3>
                             <p class="lightbox-info-desc" id="lb-desc">Descripción.</p>
                         </div>
 
-                        <!-- Proyecto Relacionado -->
                         <div class="lightbox-related" id="lb-related">
                             <h4>También te podría interesar:</h4>
                             <a href="#" class="related-card-mini" id="lb-related-link">
@@ -1019,7 +1020,6 @@ const GlobalLogic = {
 
         const resetZoom = () => { isZoomed = false; lbImg.classList.remove('zoomed'); lbImg.style.transformOrigin = 'center center'; };
         
-        // ... (Lógica de Zoom y Pan se mantiene igual) ...
         const toggleZoom = (e) => {
             if(e.target !== lbImg && e.target !== imgArea) return;
             isZoomed = !isZoomed;
@@ -1075,12 +1075,26 @@ const GlobalLogic = {
                 lbRelatedSection.style.display = "none";
             }
 
+            // --- GESTIÓN DE Z-INDEX RESPONSIVE ---
+            const width = window.innerWidth;
+            if (width <= 900) { // Si es tablet o móvil
+                lightbox.style.zIndex = '9999'; // Traer al frente
+            } else {
+                lightbox.style.zIndex = '2000'; // Valor desktop por defecto
+            }
+
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         };
 
         const closeLightbox = () => { 
             lightbox.classList.remove('active'); 
+            
+            // Retrasar el z-index negativo para que termine la transición de opacidad
+            setTimeout(() => {
+                lightbox.style.zIndex = '-10'; 
+            }, 300); // 300ms = duración de la transición CSS
+            
             document.body.style.overflow = 'auto'; 
             resetZoom(); 
         };
@@ -1088,13 +1102,11 @@ const GlobalLogic = {
         const nextImage = (e) => { if(e) e.stopPropagation(); currentIndex = (currentIndex + 1) % currentGallery.length; updateLightboxContent(); };
         const prevImage = (e) => { if(e) e.stopPropagation(); currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length; updateLightboxContent(); };
 
-        // EVENTOS
+        // Listeners
         document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
         
-        // Listeners para TODOS los botones (Flotantes y Panel)
         const nextBtns = document.querySelectorAll('.lightbox-next-float, .lightbox-next-panel');
         const prevBtns = document.querySelectorAll('.lightbox-prev-float, .lightbox-prev-panel');
-        
         nextBtns.forEach(btn => btn.addEventListener('click', nextImage));
         prevBtns.forEach(btn => btn.addEventListener('click', prevImage));
         
@@ -1108,7 +1120,6 @@ const GlobalLogic = {
             if (e.key === 'ArrowLeft') prevImage();
         });
 
-        // DELEGACIÓN
         document.addEventListener('click', (e) => {
             const targetImg = e.target.closest('.zoomable-img');
             if (targetImg) {
