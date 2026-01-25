@@ -24,7 +24,7 @@
   <!-- HEADER -->
   <header class="main-header">
     <div class="logo">
-      Juan Esteban
+      Juan Esteban Acosta Peña
       <img src="images/tem.png" alt="Marca personal" class="logo-mark">
     </div>
     <div class="menu-overlay"></div>
@@ -34,7 +34,7 @@
     <nav>
       <ul>
         <li><a href="#hero">Inicio</a></li>
-        <li><a href="#works">Proyectos</a></li>
+        <li><a href="#work">Proyectos</a></li>
         <li><a href="#about">Sobre mi</a></li>
         <li><a href="#contact-sticky">Contacto</a></li>
       </ul>
@@ -51,56 +51,37 @@
         en <span>Ilustración</span> y <span>Modelado 3D</span>
       </h1>
       <p class="subtitle">Creo mundos, personajes y visuales que cuentan historias.</p>
-      <a href="#works" class="cta">Ver trabajos</a>
+      <a href="#work" class="cta">Ver trabajos</a>
     </div>
     <div class="hero-image">
       <img src="images/juan-acosta-pena-render.jpg" alt="Hero placeholder">
     </div>
   </section>
 
-  <!-- WORKS SECTION -->
-  <section id="works" class="works">
-    <h2 class="section-title">Proyectos Seleccionados</h2>
-    <div class="works-grid">
-      <div class="work-card">
-        <img src="images/juan-acosta-pena-r4.jpg" alt="Proyecto 1">
-        <div class="work-info">
-          <h3>Escultura 3D</h3>
-          <p>Experimentación de forma y textura.</p>
-        </div>
+  <!-- WORK SECTION -->
+  <section id="work" class="work">
+    <div class="container">
+      <h2 class="title section-title" style="text-align:center; padding-top: 5rem;">
+        Mis <span class="highlight">Proyectos</span>
+      </h2>
+      <p style="text-align:center; color:#ccc; padding-bottom: 1rem">
+        Selección de trabajos destacados.
+      </p>
+      
+      <div id="featured-grid" class="work-grid">
       </div>
-      <div class="work-card">
-        <img src="images/juan-acosta-pena-final_nt.jpg" alt="Proyecto 2">
-        <div class="work-info">
-          <h3>Concept Art</h3>
-          <p>Exploración narrativa visual.</p>
-        </div>
-      </div>
-      <div class="work-card">
-        <img src="images/juan-acosta-pena-render-v04.jpg" alt="Proyecto 3">
-        <div class="work-info">
-          <h3>Modelado</h3>
-          <p>Conceptos a partir del volumen</p>
-        </div>
+
+      <div style="text-align: center">
+          <a href="gallery.html" class="about-cta">
+            Ver Galería Completa
+          </a>
       </div>
     </div>
   </section>
 
-<!-- MODAL DE GALERÍA -->
-<div id="gallery-modal" class="gallery-modal">
-  <div class="gallery-content">
-    <span class="close-modal">&times;</span>
-    <div class="gallery-main">
-      <button class="nav-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-      <div class="gallery-info">
-        <img class="gallery-image" src="" alt="">
-        <h3 class="gallery-title"></h3>
-        <p class="gallery-description"></p>
-      </div>
-      <button class="nav-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
-  </div>
-</div>
+  <script src="data.js"></script> 
+</body>
+</html>
 
 <!-- ABOUT ME SECTION -->
 <section id="about" class="about">
@@ -120,37 +101,53 @@
        class="about-cta" target="_blank">Descargar full CV</a>
     </div>
     <div class="about-image">
-      <img src="images/WhatsApp Image 2025-10-17 at 12.28.23 PM.jpeg" alt="Retrato o trabajo de Juan Esteban" />
+      <img src="images/autoretratoHD.png" alt="Autoretrato en Pixel Art" />
     </div>
   </div>
 </section>
 
-  <!-- CONTACT SPLIT SECTION -->
 <!-- CONTACT SPLIT SECTION -->
 <section id="contact-sticky" class="contact-sticky">
-  <div class="contact-left">
-    <h2>Estoy</h2>
-    <p class="contact-note">Disponible para proyectos freelance, colaboraciones y encargos creativos.</p>
-    <a href="#" class="contact-button open-contact">Escríbeme</a>
-  </div>
+    
+    <div class="contact-left">
+      <h2>Estoy</h2>
+      
+      <!-- TEXTO POR DEFECTO (ESCRITORIO) -->
+      <p class="contact-note">
+        Disponible para proyectos freelance, colaboraciones y encargos creativos.
+      </p>
 
-  <div class="contact-right">
-    <div class="help-section">
-      <div class="help-item">
-        <h3>🎨 Ilustración</h3>
-        <p>Diseño de personajes, portadas, visuales narrativos y estilos experimentales.</p>
-      </div>
-      <div class="help-item">
-        <h3>🧱 Modelado 3D</h3>
-        <p>Esculpido digital, props estilizados, renderizado y composición visual.</p>
-      </div>
-      <div class="help-item">
-        <h3>🎬 Animación</h3>
-        <p>Motion design y animaciones breves con narrativa visual coherente.</p>
+      <!-- TEXTO MÓVIL (Oculto por defecto) -->
+      <p class="contact-note-mobile-text">
+        <span style="color:#aaa">Disponible para proyectos de </span>
+        <span style="color:#00e0e0">Ilustración</span>
+        <span style="color:#aaa">,</span>
+        <span style="color:#00e0e0">Modelado 3D</span> 
+        <span style="color:#aaa">y</span>
+        <span style="color:#00e0e0">Animación</span>
+        <span style="color:#aaa">, como freelance, colaboraciones y encargos creativos.</span>
+      </p>
+
+      <a href="#" class="contact-button open-contact">Escríbeme</a>
+    </div>
+
+    <div class="contact-right">
+      <div class="help-section">
+        <div class="help-item">
+          <h3>🎨 Ilustración</h3>
+          <p>Diseño de personajes, portadas, visuales narrativos y estilos experimentales.</p>
+        </div>
+        <div class="help-item">
+          <h3>🧱 Modelado 3D</h3>
+          <p>Esculpido digital, props estilizados, renderizado y composición visual.</p>
+        </div>
+        <div class="help-item">
+          <h3>🎬 Animación</h3>
+          <p>Motion design y animaciones breves con narrativa visual coherente.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -168,7 +165,7 @@
       <h4>Navegación</h4>
       <ul>
         <li><a href="#hero">Inicio</a></li>
-        <li><a href="#works">Proyectos</a></li>
+        <li><a href="#work">Proyectos</a></li>
         <li><a href="#about">Sobre mí</a></li>
         <li><a href="#contact-sticky">Contacto</a></li>
       </ul>
@@ -180,11 +177,14 @@
             <a href="https://www.instagram.com/nasty.styl3/" target="_blank" aria-label="Instagram">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://www.artstation.com/juanacosta77055" target="_blank" aria-label="ArtStation">
+            <a href="https://www.artstation.com/user-4935832" target="_blank" aria-label="ArtStation">
                 <i class="fa-brands fa-artstation"></i>
             </a>
             <a href="https://www.linkedin.com/in/juan-esteban-acosta-pe%C3%B1a-1ba57b29b/" target="_blank" aria-label="LinkedIn">
                 <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://jadzzon.itch.io/" target="_blank" aria-label="itch-io">
+                <i class="fa-brands fa-itch-io"></i>
             </a>
         </div>
     </div>
@@ -213,9 +213,8 @@
     <div class="form-status"></div>
   </div>
 </div>
-
-
-
+  <script src="config.js"></script>
   <script src="script.js"></script>
+  <script src="responsive.js"></script>
 </body>
 </html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cargando Proyecto... | Juan Esteban</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="responsive.css" />
+  
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>   
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="logo">
+      Juan Esteban Acosta Peña
+      <img src="images/tem.png" alt="Marca personal" class="logo-mark">
+    </div>
+    <div class="menu-overlay"></div>
+    <button class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <nav>
+      <ul>        
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Galeria</a></li>
+        <li><a href="#" class="open-contact">Escríbeme</a></li>
+        <li>
+          <a href="index.html" aria-label="Volver" onclick="if(window.history.length > 1){event.preventDefault(); window.history.back();}">
+            Volver
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="project-container" class="project-page">
+    
+      <button id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+      <section class="project-hero">
+          <div class="project-hero-bg" id="p-hero-img"></div>
+          <div class="project-hero-content-container">
+                <span class="project-cat-tag" id="p-category">Categoría</span>
+                <h1 id="p-title">Título del Proyecto</h1>
+                <div class="hero-tags-container" id="p-hero-tags">Etiquetas</div>
+                <div class="project-meta" id="p-meta">
+                </div>
+          </div>
+      </section>
+
+      <section class="project-details section">
+          <div class="container project-layout">
+              <div class="project-desc">
+                  <h3>Sobre el proyecto</h3>
+                  <p id="p-description">Descripción...</p>
+                  
+                  <div class="project-links" id="p-links"></div>
+              </div>
+              <div class="project-tech">
+                  <h3>Herramientas</h3>
+                  <div class="tech-tags" id="p-tools"></div>
+              </div>
+          </div>
+      </section>
+
+      <section class="project-gallery-section section">
+          <div class="container">
+              <h3 class="gallery-title">Galería de Proceso</h3>
+              <div class="gallery-grid" id="p-gallery">
+                  </div>
+          </div>
+      </section>
+
+      <!-- NUEVO: PROYECTOS RELACIONADOS -->
+      <section id="related-projects-section" class="section related-section" style="display: none;">
+          <div class="container">
+              <h3 class="gallery-title">También te puede interesar</h3>
+              <!-- Reutilizamos la clase work-grid para que las tarjetas se vean igual -->
+              <div id="related-projects-grid" class="work-grid">
+                  <!-- Se llena con JS -->
+              </div>
+          </div>
+      </section>
+  </main>
+
+  <!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+
+    <!-- Columna 1: Mensaje personal -->
+    <div class="footer-about">
+      <h3>Gracias por visitar mi portfolio</h3>
+      <p>Explora, inspírate y si algo resonó contigo, <br>
+      hablemos sobre cómo crear algo increíble juntos.</p>
+    </div>
+
+    <!-- Columna 2: Enlaces rápidos -->
+    <div class="footer-links">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Galeria</a></li>
+        <li><a href="#" class="open-contact">Escribeme</a></li>
+        <li><a href="index.html" aria-label="Volver" onclick="if(window.history.length > 1){event.preventDefault(); window.history.back();}">
+            Volver
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Redes -->
+    <div class="footer-social">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/nasty.styl3/" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.artstation.com/user-4935832" target="_blank" aria-label="ArtStation">
+                <i class="fa-brands fa-artstation"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/juan-esteban-acosta-pe%C3%B1a-1ba57b29b/" target="_blank" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://jadzzon.itch.io/" target="_blank" aria-label="itch-io">
+                <i class="fa-brands fa-itch-io"></i>
+            </a>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Juan Esteban Acosta Peña — Todos los derechos reservados</p>
+  </div>
+</footer>
+
+ <!-- MODAL DE CONTACTO -->
+<div id="contact-modal" class="contact-modal">
+  <div class="contact-content">
+    <span class="close-contact">&times;</span>
+    <h2>Contáctame</h2>
+    <p>¿Tienes una idea o proyecto en mente? Cuéntame un poco y te responderé pronto.</p>
+
+    <form id="contact-form" class="contact-form">
+      <input type="text" name="name" placeholder="Tu asunto" required>
+      <input type="email" name="email" placeholder="Tu correo" required>
+      <textarea name="message" rows="4" placeholder="Tu mensaje" required></textarea>
+      <button type="submit" class="send-btn">Enviar mensaje</button>
+    </form>
+
+    <div class="form-status"></div>
+  </div>
+</div>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="responsive.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

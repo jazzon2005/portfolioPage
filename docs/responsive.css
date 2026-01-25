@@ -1,8 +1,13 @@
+
 /* ===========================================================
    RESPONSIVE PARA MÓVILES — 480px
    =========================================================== */
 
 @media (max-width: 480px) {
+
+    .logo{
+        font-size: 1.8rem;
+    }
 
     /* -------------------- HEADER -------------------- */
     .menu-toggle {
@@ -25,12 +30,12 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.25s ease;
-        z-index: 150;
+        z-index: 1500;
     }
 
     /* Cuando el menú abre */
-    .main-header.open ~ .menu-overlay {
-        opacity: 1;
+    .main-header.open ~ .menu-overlay {  
+        z-index: 1000;      
         pointer-events: auto;
     }
 
@@ -55,7 +60,6 @@
         flex-direction: column;
         list-style: none;
         width: 100%;
-        max-width: 420px;
         text-align: center;
         background: rgba(10,10,10,1);
     }
@@ -82,14 +86,13 @@
     .main-header {
         align-items: center;
         padding: 10px 15px;
-        background: rgba(10,10,10,1);
     }
 
     /* -------------------- HERO -------------------- */
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 40px 20px;
+        padding: 20px 20px;
         height: auto;
         gap: 20px;
     }
@@ -110,7 +113,7 @@
     /* ✅ Texto en medio */
     .hero-text {
         order: 2;
-        padding-top: 125px;
+        padding-top: 5rem;
     }
 
     .hero-text .title {
@@ -136,22 +139,28 @@
         text-align: center;
     }
 
-    .works {
-        padding: 20px 20px;
+    #work{
+        padding-bottom: 5rem;
     }
 
-    .works-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    /* Botón ancho en móvil */
+    .work-footer .about-cta {
+        width: 100%;
+        text-align: center;
+        display: block; 
+        padding: 1rem;
     }
 
-    .work-card img {
-        max-height: 240px;
-        object-fit: cover;
+    /* --- NUEVO: FEATURED GRID SIMPLIFICADO --- */
+    /* Ocultamos todas las tarjetas excepto la primera (la destacada) */
+    #featured-grid .work-card:nth-child(n+2) {
+        display: none;
     }
-
-    .work-info h3 {
-        font-size: 1.1rem;
+    
+    /* Ajuste para que la única tarjeta visible se vea bien */
+    #featured-grid {
+        gap: 0; /* Sin gap porque solo hay una */
+        padding-top: 0;
     }
 
 /* -------------------- MODAL -------------------- */
@@ -262,32 +271,38 @@
         padding: 40px 20px;
         gap: 30px;
         padding-bottom: 100px;
+        display: block;
+    }
+
+    .contact-right{
+        display: none;
+    }
+
+    .contact-note{
+        display:none;
+    }
+
+    .contact-left{
+        display: block;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-note-mobile-text {
+        display: block; /* ¡Aquí aparece! */
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
     }
 
     .contact-left h2 {
         font-size: 1.6rem;
-    }
-
-    .contact-note {
-        font-size: 0.95rem;
-    }
+    }   
 
     .contact-button {
         margin-bottom: 40px;
         font-size: 0.9rem;
         padding: 10px 18px;
-    }
-
-    .help-section {
-        gap: 20px;
-    }
-
-    .help-item h3 {
-        font-size: 1.1rem;
-    }
-
-    .help-item p {
-        font-size: 0.92rem;
     }
     
     /* -------------------- FOOTER -------------------- */
@@ -349,6 +364,47 @@
         font-size: 0.9rem;
         padding: 10px;
     }
+
+    /*GALERIAAAAAAAAAAAAAAAA*/
+
+    #gallery-full-grid {
+        grid-template-columns: 1fr !important; /* 1 columna estricta */
+    }
+    
+    .top-bar-right {
+        flex-direction: column-reverse !important; /* Apilar botón y texto */
+        align-items: flex-start !important;
+        gap: 0.5rem !important;
+    }
+    
+    .filter-toggle-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .page-title{
+        font-size: 1.8rem;
+    }
+
+    #related-projects-grid {
+        grid-template-columns: 1fr !important; /* Forzamos 1 columna */
+        gap: 1.5rem;
+    }
+
+    /* Aseguramos que las tarjetas dentro no intenten hacer span (si usamos bento) */
+    #related-projects-grid .work-card {
+        grid-column: auto !important; /* Reseteamos cualquier span */
+        aspect-ratio: 1 / 1 !important; /* Formato estándar */
+    }
+
+    .related-card-mini{
+        width: 60% !important;
+    }
+
+    #lightbox-close{
+        top: 1rem !important;
+        right: 1rem !important;
+    }
 }
 
 /* ===========================================================
@@ -359,7 +415,7 @@
 
     /* -------------------- HEADER -------------------- */
     .main-header {
-        padding: 12px 25px;
+        padding: 1rem 4rem;
     }
 
     .logo {
@@ -367,7 +423,7 @@
     }
 
     .main-header nav ul {
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .main-header a {
@@ -377,14 +433,16 @@
     /* -------------------- HERO -------------------- */
     .hero {
         flex-direction: row;
-        height: 85vh;
+        height: 70vh;
         gap: 30px;
         align-items: center;
+        padding-top: 0rem;
     }
 
     .hero-text {
         flex: 1;
         max-width: 450px;
+        margin-top: 3rem;
     }
 
     .hero-text .title {
@@ -412,26 +470,48 @@
     }
 
     /* -------------------- WORKS -------------------- */
-    .works {
+    #work{
+        padding-bottom: 5rem;
+    }
+    .work-section {
         padding: 60px 5%;
     }
 
     .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 3rem;
+        margin-bottom: 0;
+        font-size: 2rem;
     }
 
-    .works-grid {
+    /* Grid Base de 2 Columnas */
+    #featured-grid {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
+        gap: 1.5rem;
+        grid-auto-flow: dense; /* Ayuda a que el layout se sienta compacto */
+        padding-top: 0;
     }
 
+    /* --- LÓGICA BENTO --- */
+    /* La primera tarjeta (Destacada) ocupa el ancho completo (2 columnas) */
+    #featured-grid .work-card:nth-child(1) {
+        grid-column: span 2; 
+        aspect-ratio: 21 / 9; /* Formato panorámico cinematográfico */
+    }
+
+    /* Las tarjetas siguientes ocupan 1 columna y son cuadradas */
+    #featured-grid .work-card:not(:nth-child(1)) {
+        grid-column: span 1;
+        aspect-ratio: 1 / 1; /* Cuadrado perfecto para equilibrio */
+    }
+
+    /* Ajuste de imagen para que llene bien el espacio bento */
     .work-card img {
-        max-height: 280px;
+        height: 100%;
+        object-fit: cover;
     }
 
     .work-info h3 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .work-info p {
@@ -457,7 +537,7 @@
     }
 
     .gallery-title {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         margin-top: 10px;
     }
 
@@ -510,6 +590,7 @@
     }
 
     .about-image img {
+        margin-bottom: 8rem;
         max-width: 320px;
         border-radius: 16px;
     }
@@ -520,6 +601,7 @@
     }
 
     /* -------------------- CONTACT SPLIT -------------------- */
+    
     .contact-sticky {
         flex-direction: row;
         padding: 60px 5%;
@@ -658,5 +740,352 @@
         font-size: 2rem;
         top: 18px;
         right: 22px;
+    }
+
+
+    /*PROJECT PAGEEEEEEEE*/
+
+    .project-cat-tag{
+        font-size: 0.7rem;
+    }
+
+}
+
+/* ===========================================================
+   REGLAS GLOBALES PARA TÁCTIL (Tablet + Móvil: Max 768px)
+   Objetivo: Mostrar info de tarjetas siempre, sin hover.
+   =========================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Desactivar interacciones de Hover/Escala */
+    .work-card, 
+    .work-card:hover {
+        transform: none !important; /* Sin zoom */
+        box-shadow: none !important; /* Sin elevación exagerada */
+        z-index: 1 !important;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* 2. Imagen estática y oscurecida para legibilidad */
+    .work-image, 
+    .work-card:hover .work-image {
+        height: 100% !important; /* Ocupa todo el alto */
+        filter: brightness(0.6) !important; /* Oscura para que el texto blanco resalte */
+    }
+
+    .work-card:hover .work-image img {
+        transform: none !important; /* Sin zoom interno */
+    }
+
+    /* 3. Información siempre visible */
+    .work-info, 
+    .work-card:hover .work-info {
+        opacity: 1 !important; /* Siempre visible */
+        transform: translateY(0) !important; /* En su posición final */
+        height: 100% !important; /* Capa sobre toda la tarjeta */
+        padding: 1.5rem;
+        
+        /* Gradiente para asegurar lectura en la parte inferior */
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.4) 50%, transparent 100%) !important;
+        
+        /* Alinear texto abajo */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    /* Ajuste de textos para móvil/tablet */
+    .work-title {
+        font-size: 1.2rem;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    
+    .work-cat {
+        opacity: 0.9;
+    }
+
+            /*PAGINA GALERIAAAAAAAAAAAAAA*/
+
+
+     /* 1. Layout de una sola columna: IMPORTANTE */
+    /* Quitamos el espacio reservado de 260px para el sidebar */
+    .gallery-layout-container {
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+        position: relative; 
+    }
+
+    /* 2. Sidebar convertido en Drawer (Panel Lateral) */
+    .filters-sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Oculto a la izquierda por defecto */
+        width: 300px; /* Ancho del menú deslizante */
+        height: 100vh;
+        background: #111;
+        z-index: 200; /* Por encima de todo */
+        padding: 2rem;
+        overflow-y: auto;
+        transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        border-right: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+        border-radius: 0; 
+        margin: 0; 
+    }
+
+    /* Estado Abierto (Añadido por JS) */
+    .filters-sidebar.open {
+        left: 0; /* Se desliza a la vista */
+    }
+
+    /* 3. Mostrar controles móviles */
+    .filter-toggle-btn {
+        display: flex; /* Aparece el botón "Filtros" */
+    }
+
+    .close-filters-btn {
+        display: block; /* Aparece la X para cerrar */
+    }
+
+    .filters-actions-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .filters-header .clear-btn {
+        display: none; 
+    }
+
+    .apply-filters-btn-mobile {
+        display: block; 
+    }
+
+    /* 4. Ajustes del Top Bar */
+    .gallery-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .top-bar-right {
+        width: 100%;
+        justify-content: space-between;
+        flex-direction: row-reverse; /* Botón a la derecha */
+    }
+    
+    /* Grid de 2 columnas para resultados */
+    #gallery-full-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #gallery-pagination{
+        padding-right:3rem; 
+    }
+
+    /*PROJECT PAGEEEEEEEEEEEEEE*/
+
+     .hero-tags-container {
+        margin-bottom: 1rem;
+    }
+
+    /* Neutralizar efectos Hover en táctil */
+    /* Mantenemos el estilo base aunque el usuario toque el elemento */
+    .hero-tag:hover,
+    .hero-tag:active,
+    .hero-tag:focus {
+        background: rgba(0, 224, 224, 0.1) !important;
+        border-color: rgba(0, 224, 224, 0.3) !important;
+        box-shadow: none !important;
+        transform: none !important;
+        color: #e0ffff !important;
+    }
+    
+    /* Asegurar que el título y categoría también estén centrados en Project Page */
+    .project-hero-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-top: 1.5rem;
+        margin-top: 1rem;
+        padding-bottom: 1.5rem;
+    }
+    .project-hero h1 {
+        font-size: 2rem;
+    }
+    .project-hero {
+        height: 50vh;
+    }
+
+    .project-desc h3{
+        font-size: 1.4rem;
+    }
+
+    .project-desc p{
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .project-tech h3{
+        font-size: 1.4rem;
+    }
+
+    /* Etiqueta Individual */
+    .tech-tag {
+        font-size: 0.75rem; /* Tamaño legible */
+        border-radius: 6px; /* Coherente con work-cards */
+        
+        /* Desactivar efectos de hover de escritorio si existieran */
+        transition: none; 
+        padding: 0.4rem 0.8rem;
+    }
+
+    .project-gallery-section{
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top:1rem;
+        padding-bottom: 1rem;
+    }
+
+    .load-more-btn:hover,
+    .load-more-btn:focus,
+    .load-more-btn:active {
+        background: transparent !important;
+        border: 2px solid rgba(255, 255, 255, 0.1) !important;
+        color: #fff !important;
+        transform: none !important; /* Quitar elevación */
+        box-shadow: none !important;
+    }
+
+    .related-section{
+        padding-left: 4rem;
+        padding-right: 4rem;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    #related-projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Por defecto 2 columnas */
+        gap: 1.5rem;
+    }
+
+    /* Lógica Bento: Solo si hay exactamente 3 elementos (hijos) */
+    /* Usamos el selector :has() si es moderno, o selectores nth-child específicos */
+    
+    /* Si el grid tiene al menos 3 elementos... */
+    #related-projects-grid:has(.work-card:nth-child(3)) {
+        /* ...el primero ocupa todo el ancho */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    #related-projects-grid:has(.work-card:nth-child(3)) .work-card:nth-child(1) {
+        grid-column: span 2; /* Ocupa las 2 columnas (Full Width) */
+        aspect-ratio: 21 / 9; /* Formato panorámico para el destacado */
+    }
+    
+    /* Los otros 2 (2 y 3) se acomodan naturalmente en la fila de abajo (1 columna c/u) */
+    #related-projects-grid:has(.work-card:nth-child(3)) .work-card:nth-child(n+2) {
+        grid-column: span 1;
+        aspect-ratio: 1 / 1; /* Formato estándar */
+    }
+}
+
+/* --- RESPONSIVE DEL LIGHTBOX (Tablet y Móvil) --- */
+@media (max-width: 900px) {
+    #lightbox {
+        display: block; /* Permitir flujo natural */
+        overflow-y: auto; /* Scroll en todo el modal */
+        padding: 0;
+    }
+    
+    .lightbox-container {
+        flex-direction: column; /* Apilar */
+        height: auto; /* Altura automática */
+        min-height: 100vh;
+    }
+
+    /* Área de Imagen */
+    .lightbox-image-area {
+        flex: none; /* No expandir automáticamente */
+        width: 100%;
+        height: auto; /* Altura ajustada a contenido */
+        min-height: 50vh; /* Mínimo media pantalla */
+        
+        /* AJUSTE CLAVE PARA SEPARAR LA IMAGEN DE LOS BORDES */
+        padding: 2rem 1.5rem; /* 2rem arriba/abajo, 1.5rem lados */
+        
+        background: #000;
+        position: relative;
+    }
+    
+    #lightbox-img {
+        max-width: 100%;
+        height: auto; 
+        max-height: 70vh; /* Limitar altura */
+        
+        /* Asegura que la imagen no toque los bordes del padding */
+        display: block;
+        margin-top: 14rem;
+    }
+
+    /* OCULTAR flechas flotantes en móvil */
+    .lightbox-btn-float {
+        display: none !important;
+    }
+
+    /* Panel de Información */
+    .lightbox-panel {
+        width: 100%; 
+        height: auto; 
+        border-left: none; 
+        border-top: 1px solid #333; 
+        padding: 1.5rem;
+        background: #111;
+        overflow: visible; 
+    }
+
+    /* MOSTRAR barra de controles en móvil */
+    .lightbox-controls-bar {
+        display: flex !important;
+        order: -1; /* Poner visualmente primero, aunque en HTML ya lo movimos */
+    }
+
+    .lightbox-info-content{
+        margin:0;
+    }
+
+    .lightbox-info-desc{
+        margin-bottom:1rem;
+    }
+    
+    /* Ocultar el contador flotante de desktop si existiera uno separado */
+    .lightbox-info-top #lb-counter {
+        display: none; 
+    }
+    
+    /* El botón cerrar fijo sigue siendo útil */
+    #lightbox-close {
+        top: 2rem;
+        right: 2rem;
+        background: rgba(0,0,0,0.6); /* Fondo oscuro para verlo sobre la imagen */
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        position: fixed; /* Fijo para que siempre esté accesible al hacer scroll */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+
+    .related-card-mini{
+        width: 40%;
     }
 }
